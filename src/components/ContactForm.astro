@@ -1,0 +1,120 @@
+---
+---
+
+<div class="mb-8 h-4 bg-gradient-to-r from-amaranth-300 to-amaranth-500"></div>
+<section>
+  <div class="container mx-auto px-2.5 sm:px-4 max-w-1200">
+    <div class="flex flex-row flex-wrap">
+      <div class="w-full sm:w-2/6 px-4">
+        <div class="flex justify-center items-center mb-4">
+          <div class="bg-amaranth-300 -skew-y-10">
+            <h2 class="m-4 font-body font-bold text-3xl sm:text-5xl skew-y-10">Contact Us</h2>
+          </div>
+        </div>
+      </div>
+      <div class="w-full sm:w-4/6 px-4">
+        <form id="contact-form" action="https://formspree.io/f/mnqygbrj" method="POST">
+          <fieldset>
+            <legend>
+              <h3 class="absolute w-px h-px p-0 overflow-hidden border-0">Your details</h3>
+            </legend>
+            <div class="mb-8">
+              <label class="block mb-1 text-base sm:text-a11y font-body text-base sm:text-a11y" for="fullname">Name</label>
+              <input
+                id="fullname"
+                name="fullname"
+                type="text"
+                spellcheck="false"
+                autocomplete="name"
+                class="w-full font-body border-2 border-solid border-cod-gray-950 h-10 p-1 text-base sm:text-a11y focus:outline-2 focus:outline focus:outline-amaranth-600"
+              />
+            </div>
+            <div class="mb-8">
+              <label class="block mb-1 text-base sm:text-a11y font-body text-base sm:text-a11y" for="email">Email address</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                spellcheck="false"
+                autocomplete="email"
+                class="w-full font-body border-2 border-solid border-cod-gray-950 h-10 p-1 text-base sm:text-a11y focus:outline-2 focus:outline focus:outline-amaranth-600"
+              />
+            </div>
+            <div class="mb-8">
+              <label class="block mb-1 text-base sm:text-a11y font-body text-base sm:text-a11y" for="message">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                class="block w-full font-body border-2 border-solid border-cod-gray-950 h-10 p-1 text-base sm:text-a11y focus:outline-2 focus:outline focus:outline-amaranth-600 min-h-[8.25rem] resize-y"
+              ></textarea>
+            </div>
+          </fieldset>
+          <button
+            data-prevent-double-click="true"
+            type="submit"
+            class="relative inline-block mb-8 p-2.5 bg-amaranth-600 text-white font-body w-auto text-base sm:text-a11y shadow text-center align-top hover:bg-amaranth-900">Send</button
+          >
+        </form>
+        <strong id="contact-form-status" class="hidden mb-8 inline-block font-body uppercase px-2 py-1 text-verdun-green-900 bg-egg-white-100"></strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form')
+  const status = document.getElementById('contact-form-status')
+
+  async function handleSubmitForm(event) {
+    event.preventDefault()
+    const data = new FormData(event.target)
+    status.innerHTML = 'Sending...'
+    status.classList.remove('hidden')
+    status.classList.add('inline-block')
+    status.classList.remove('text-tamarillo-800')
+    status.classList.remove('bg-albescent-white-200')
+    status.classList.add('text-verdun-green-900')
+    status.classList.add('bg-egg-white-100')
+
+    try {
+      const response = await fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          Accept: 'application/json',
+        },
+      })
+
+      if (response.ok) {
+        status.innerHTML = 'Thanks, We will contact you soon'
+        status.classList.remove('text-verdun-green-900')
+        status.classList.remove('bg-egg-white-100')
+        status.classList.add('text-new-green-900')
+        status.classList.add('bg-edgewater-200')
+        window.dataLayer.push({ event: 'form_submit', email: document.getElementById('email').value })
+        form.reset()
+      } else {
+        response.json().then((data) => {
+          if (Object.hasOwn(data, 'errors')) {
+            status.innerHTML = data['errors'].map((error) => error['message']).join(', ')
+            status.classList.remove('text-verdun-green-900')
+            status.classList.remove('bg-egg-white-100')
+            status.classList.add('text-tamarillo-800')
+            status.classList.add('bg-albescent-white-200')
+          } else {
+            status.innerHTML = 'Oops! There was a problem submitting your form'
+            status.classList.remove('text-verdun-green-900')
+            status.classList.remove('bg-egg-white-100')
+            status.classList.add('text-tamarillo-800')
+            status.classList.add('bg-albescent-white-200')
+          }
+        })
+      }
+    } catch (error) {
+      status.innerHTML = 'Oops! There was a problem submitting your form'
+    }
+  }
+
+  form.addEventListener('submit', handleSubmitForm)
+</script>
