@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+  }
+
+  img {
+    @apply align-middle max-w-full h-auto inline-block;
+  }
+
+  p {
+    @apply text-base mb-4 last:mb-0;
+  }
+}
+
+@layer components {
+  .header__title {
+    @apply text-2xl font-bold;
+  }
+
+  .header__description {
+    @apply text-sm text-zinc-500 mb-0;
+  }
+
+  .header__bar {
+    @apply w-full my-3 border-t border-t-zinc-200;
+  }
+
+  .card {
+    @apply flex flex-col overflow-hidden rounded-lg shadow-sm border border-zinc-200 mb-4;
+  }
+
+  .card__header {
+    @apply p-4;
+  }
+
+  .card__title {
+    @apply mb-2 text-lg font-semibold;
+  }
+
+  .card__body {
+    @apply px-4;
+  }
+
+  .card__bar {
+    @apply my-4 border-y border-solid border-t-zinc-200 border-b-white/50;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto px-4;
+  }
+
+  .grid__row {
+    @apply flex flex-wrap flex-row;
+  }
+
+  .grid__cell {
+    @apply flex-none min-w-0 min-h-0 px-4;
+  }
+
+  .grid__cell--small-12 {
+    @apply w-full;
+  }
+
+  .grid__cell--medium-3 {
+    @apply sm:w-1/4;
+  }
+
+  .grid__cell--medium-6 {
+    @apply sm:w-1/2;
+  }
+
+  .grid__cell--medium-9 {
+    @apply sm:w-3/4;
+  }
+
+  .contact__title {
+    @apply font-bold text-3xl text-center;
+  }
+
+  .contact__form-group {
+    @apply mb-4;
+  }
+
+  .contact__form-label {
+    @apply block mb-1 text-base;
+  }
+
+  .contact__input,
+  .contact__textarea {
+    @apply w-full border-2 border-solid border-black h-10 p-1 text-base focus:outline-none focus:border-[#e91e63];
+  }
+
+  .contact__textarea {
+    @apply resize-y min-h-[8.25rem] block;
+  }
+
+  .contact__button {
+    @apply bg-[#e91e63] relative inline-block mb-8 p-2.5 text-white w-auto text-base shadow text-center align-top hover:bg-[#8b1034];
+  }
+}
