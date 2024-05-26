@@ -6,10 +6,10 @@ export interface Props {
 const { update } = Astro.props
 ---
 
-<footer class="pt-6 pb-4 sm:pt-10 sm:pb-6 border-t border-solid border-t-bombay-400 bg-desert-storm-100" role="contentinfo">
-  <div class="container mx-auto px-2.5 sm:px-4">
-    <p class="pb-4 text-lg font-body text-cod-gray-950 text-a11y">Designed and Built by Marut Punsakorn</p>
-    <p class="pb-4 text-lg font-body text-cod-gray-950 text-a11y">This site is made with Astro, TailwindCSS and Formspree</p>
-    <p class="text-sm font-body italic text-cod-gray-950">Last updated: {update}</p>
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <p>Designed and Built by Marut Punsakorn</p>
+    <p>This site is made with Astro, TailwindCSS and Formspree</p>
+    <p class="footer__colophon">Last updated: {update}</p>
   </div>
 </footer>

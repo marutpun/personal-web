@@ -1,4 +1,6 @@
 ---
+import Alert from "./Alert.astro"
+
 ---
 <section class="container">
   <div class="grid__row">
@@ -11,24 +13,74 @@
           <label class="contact__form-label" for="name">
             Name
           </label>
-          <input class="contact__input" id="name" name="name" type="text">
+          <input class="contact__input" id="name" name="name" type="text" required>
         </div>
-    
         <div class="contact__form-group">
           <label class="contact__form-label" for="email">
             E-mail address
           </label>
-          <input class="contact__input" id="email" name="email" type="text">
+          <input class="contact__input" id="email" name="email" type="email" required>
         </div>
-    
         <div class="contact__form-group">
           <label class="contact__form-label" for="message">
             Message
           </label>
-          <textarea id="message" name="message" rows="5" class="contact__textarea"></textarea>
+          <textarea id="message" name="message" rows="5" class="contact__textarea" required></textarea>
         </div>
         <button type="submit" class="contact__button">Submit</button>
       </form>
+      <div class="alert hidden" role="alert"></div>
     </div>
   </div>
 </section>
+
+<script>
+ const form = document.getElementById('contact-form');
+  const status = document.querySelector('[role=alert]');
+
+  async function handleSubmitForm(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    try {
+      const response = await fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        status.classList.remove('hidden');
+        status.innerHTML = 'Thanks, We will contact you soon';
+        if (Array.from(status.classList).includes('alert--danger')) {
+          status.classList.remove('alert--danger');
+        }
+        status.classList.add('alert--success');
+        window.dataLayer.push({
+          event: 'form_submit',
+          email: document.getElementById('email').value,
+        });
+        form.reset();
+      } else {
+        response.json().then((data) => {
+          if (Object.hasOwn(data, 'errors')) {
+            status.innerHTML = data['errors']
+              .map((error) => error['message'])
+              .join(', ');
+            status.classList.add('alert--danger');
+            status.classList.remove('hidden');
+          } else {
+            status.innerHTML = 'Oops! There was a problem submitting your form';
+            status.classList.add('alert--danger');
+            status.classList.remove('hidden');
+          }
+        });
+      }
+    } catch (error) {
+      status.innerHTML = 'Oops! There was a problem submitting your form';
+    }
+  }
+
+  form.addEventListener('submit', handleSubmitForm);
+</script>
