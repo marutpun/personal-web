@@ -1,86 +1,86 @@
 ---
-import Alert from "./Alert.astro"
 
 ---
-<section class="container">
-  <div class="grid__row">
-    <div class="grid__cell grid__cell--small-12 grid__cell--medium-3">
-      <h2 class="contact__title">Contact Us</h2>
+<section class="grid-container prose dark:prose-invert mt-8">
+  <div class="grid-x grid-padding-x">
+    <div class="cell small-12 medium-3">
+      <div class="callout">
+        <h2 class="text-center">Contact Us</h2>
+      </div>
     </div>
-    <div class="grid__cell grid__cell--small-12 grid__cell--medium-9">
+    <div class="cell small-12 medium-9">
       <form id="contact-form" action="https://formspree.io/f/mnqygbrj" method="POST">
-        <div class="contact__form-group">
-          <label class="contact__form-label" for="name">
-            Name
-          </label>
-          <input class="contact__input" id="name" name="name" type="text" required>
-        </div>
-        <div class="contact__form-group">
-          <label class="contact__form-label" for="email">
-            E-mail address
-          </label>
-          <input class="contact__input" id="email" name="email" type="email" required>
-        </div>
-        <div class="contact__form-group">
-          <label class="contact__form-label" for="message">
-            Message
-          </label>
-          <textarea id="message" name="message" rows="5" class="contact__textarea" required></textarea>
-        </div>
-        <button type="submit" class="contact__button">Submit</button>
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text">Name</span>
+          </div>
+          <input type="text" placeholder="Your Name" class="input input-bordered w-full max-w-xs" id="name" name="name"/>
+        </label>
+        <label class="form-control w-full max-w-xs">
+          <div class="label">
+            <span class="label-text">Your E-mail</span>
+          </div>
+          <input type="text" placeholder="Your E-mail" class="input input-bordered w-full max-w-xs" id="email" name="email"/>
+        </label>
+        <label class="form-control">
+          <div class="label">
+            <span class="label-text">Message</span>
+          </div>
+          <textarea class="textarea textarea-bordered h-24" placeholder="Your Message" id="message" name="message" rows="5"></textarea>
+        </label>
+        <button type="submit" class="btn btn-primary text-base-100 btn-responsive">
+          <span class="loading loading-spinner hidden"></span>
+          Submit
+        </button>
       </form>
-      <div class="alert hidden" role="alert"></div>
+      <div role="alert" class="alert hidden" id="status">
+        <span></span>
+      </div>
     </div>
   </div>
 </section>
 
 <script>
- const form = document.getElementById('contact-form');
-  const status = document.querySelector('[role=alert]');
+import axios from 'axios';
+const contactForm = document.getElementById('contact-form');
+const loadingIcon = document.querySelector('.loading');
+const submitBtn = document.querySelector('[type=submit]');
+const submitBtnMessage = submitBtn.querySelector('span');
+const status = document.querySelector('#status');
+const statusMessage = status.querySelector('span');
 
-  async function handleSubmitForm(event) {
-    event.preventDefault();
-    const data = new FormData(event.target);
-    try {
-      const response = await fetch(event.target.action, {
-        method: form.method,
-        body: data,
-        headers: {
-          Accept: 'application/json',
-        },
-      });
+async function handleSubmitForm(event) {
+  event.preventDefault();
+  const payload = new FormData(event.target);
 
-      if (response.ok) {
-        status.classList.remove('hidden');
-        status.innerHTML = 'Thanks, We will contact you soon';
-        if (Array.from(status.classList).includes('alert--danger')) {
-          status.classList.remove('alert--danger');
-        }
-        status.classList.add('alert--success');
-        window.dataLayer.push({
-          event: 'form_submit',
-          email: document.getElementById('email').value,
-        });
-        form.reset();
-      } else {
-        response.json().then((data) => {
-          if (Object.hasOwn(data, 'errors')) {
-            status.innerHTML = data['errors']
-              .map((error) => error['message'])
-              .join(', ');
-            status.classList.add('alert--danger');
-            status.classList.remove('hidden');
-          } else {
-            status.innerHTML = 'Oops! There was a problem submitting your form';
-            status.classList.add('alert--danger');
-            status.classList.remove('hidden');
-          }
-        });
-      }
-    } catch (error) {
-      status.innerHTML = 'Oops! There was a problem submitting your form';
-    }
+  loadingIcon.classList.remove('hidden');
+  submitBtnMessage.textContent = 'Submitting...';
+  submitBtn.disabled = true;
+
+  try {
+    const response = await axios.post(contactForm.action, {
+      name: payload.get('name'),
+      email: payload.get('email'),
+      message: payload.get('message'),
+    });
+
+    status.classList.remove('hidden');
+    status.classList.add('alert-success');
+    statusMessage.textContent = `Thanks, we'll contact you soon.`;
+    contactForm.reset();
+
+  } catch (error) {
+    status.classList.remove('hidden');
+    status.classList.add('alert-warning');
+    statusMessage.textContent = `Unexpected error occurred. Please try again.`;
+
+  } finally {
+    loadingIcon.classList.add('hidden');
+    submitBtnMessage.textContent = `Submit`;
+    submitBtn.disabled = false;
   }
+}
 
-  form.addEventListener('submit', handleSubmitForm);
+contactForm.addEventListener('submit', handleSubmitForm);
+
 </script>

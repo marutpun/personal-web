@@ -6,10 +6,9 @@ export interface Props {
 const { update } = Astro.props
 ---
 
-<footer class="footer" role="contentinfo">
-  <div class="container">
-    <p>Designed and Built by Marut Punsakorn</p>
-    <p>This site is made with Astro, TailwindCSS and Formspree</p>
-    <p class="footer__colophon">Last updated: {update}</p>
-  </div>
+<footer class="footer footer-center bg-base-300 text-base-content p-4">
+  <aside>
+    <p>Built with Astro, TailwindCSS and DaisyUI</p>
+    <p>Last updated: {update}</p>
+  </aside>
 </footer>

@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import banner from '../images/undraw_stand_out_-1-oag.svg';
+---
+<div class="card lg:card-side bg-base-100 shadow p-4 rounded">
+  <figure>
+    <Image src={banner} alt="A description of my image."/>
+  </figure>
+  <div class="card-body prose">
+    <h2 class="card-title">Welcome to my website.</h2>
+    <p>I'm all-in-one person that meet every aspect you want. Technology, Politics, Travel, Voice-over, Love interested</p>
+    <p>Here, you'll find everything you need to know about my work, passions, and journey.</p>
+    <ul>
+      <li>Portfolio: Explore the projects I've worked on. Visit my <a href="https://github.com/marutpun" target="_blank">Github</a></li>
+      <li>Blog: Dive into my thoughts on technology, personal growth, and the latest trends. Visit my <a aria-disabled>Blog</a>.</li>
+      <li>Contact: Want to collaborate or just say hello, feel free to contact.</li>
+      <li>Testimonials: Hear what people say about working with me.</li>
+    </ul>
+  </div>
+</div>

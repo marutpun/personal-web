@@ -1,16 +1,7 @@
 ---
-import { Image } from 'astro:assets';
-import banner from '../images/undraw_stand_out_-1-oag.svg';
-import Card from './Card.astro';
+import Hero from './Hero.astro';
 ---
 
-<main class="container">
-  <div class="grid__row">
-    <div class="grid__cell grid__cell--small-12 grid__cell--medium-6">
-      <Image src={banner} alt="A description of my image." />
-    </div>
-    <div class="grid__cell grid__cell--small-12 grid__cell--medium-6">
-      <Card />
-    </div>
-  </div>
+<main class="grid-container mt-8">
+  <Hero />
 </main>
