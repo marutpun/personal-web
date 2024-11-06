@@ -1,14 +1,22 @@
 ---
-export interface Props {
-  update: string
+const year = new Date().getFullYear();
+
+interface Props {
+  title: string;
+  updatedAt: string;
 }
 
-const { update } = Astro.props
+const { title, updatedAt } = Astro.props;
+const localDateTime = new Date(updatedAt).toLocaleString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
 ---
 
-<footer class="footer footer-center bg-base-300 text-base-content p-4">
-  <aside>
-    <p>Built with Astro, TailwindCSS and DaisyUI</p>
-    <p>Last updated: {update}</p>
-  </aside>
+<footer class="footer">
+  <div class="footer__container">
+    <p>Copyright {year} {title}</p>
+    <p>Last updated <time datetime={updatedAt}>{localDateTime}</time></p>
+  </div>
 </footer>

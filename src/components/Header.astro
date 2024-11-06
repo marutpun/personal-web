@@ -1,8 +1,15 @@
 ---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
 ---
-<header class="grid-container">
-  <div class="prose dark:prose-invert">
-    <h1>Marut Punsakorn</h1>
-    <p>Software Engineer, Account Strategist, Analyst, Teacher, Comedian</p>
+
+<header>
+  <div class="header__container">
+    <h1 class="header__title">{title}</h1>
+    <p>{description}</p>
   </div>
 </header>

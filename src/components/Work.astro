@@ -1,0 +1,71 @@
+---
+import { Image } from 'astro:assets';
+import teaching from '../assets/undraw_teaching.svg';
+import code from '../assets/undraw_code_thinking.svg';
+import agreement from '../assets/undraw_agreement.svg';
+import playful from '../assets/undraw_playful_cat.svg';
+import barbecue from '../assets/undraw_barbecue.svg';
+---
+
+<section class="section">
+  <div class="container">
+    <h2 class="feature__title">Getting to know me</h2>
+    <div class="grid-x gap-y-8 md:gap-y-4 gap-x-4">
+      <figure class="col-start-1 col-end-13 md:col-end-5 space-y-4">
+        <Image class="feature__image" src={teaching} alt="teaching" />
+        <figcaption class="space-y-4">
+          <h3 class="text-center">Teaching</h3>
+          <p class="feature__description">
+            Expert in Thai history and language literature (and coding). Also
+            roficiency in presentation tool too!
+          </p>
+        </figcaption>
+      </figure>
+      <figure
+        class="col-start-1 col-end-13 md:col-start-5 md:col-end-9 space-y-4"
+      >
+        <Image class="feature__image" src={code} alt="web development" />
+        <figcaption class="space-y-4">
+          <h3 class="text-center">Web Development</h3>
+          <p class="feature__description">
+            Build your first website and serve globally. I can plan and design
+            the best solutions for you.
+          </p>
+        </figcaption>
+      </figure>
+      <figure class="col-start-1 col-end-13 md:col-start-9 space-y-4">
+        <Image class="feature__image" src={agreement} alt="consultation" />
+        <figcaption class="space-y-4">
+          <h3 class="text-center">Digital Marketing Consultation</h3>
+          <p class="feature__description">
+            Plan and analyze your business strategy digitally.
+          </p>
+        </figcaption>
+      </figure>
+      <figure
+        class="col-start-1 md:col-start-3 col-end-13 md:col-end-7 space-y-4"
+      >
+        <Image class="feature__image" src={playful} alt="playful cat" />
+        <figcaption class="space-y-4">
+          <h3 class="text-center">Laugh</h3>
+          <p class="feature__description">
+            I'm an optimist and can make you smile all day long. I have many
+            untold stories during my life.
+          </p>
+        </figcaption>
+      </figure>
+      <figure
+        class="col-start-1 md:col-start-7 col-end-13 md:col-end-11 space-y-4"
+      >
+        <Image class="feature__image" src={barbecue} alt="cooking" />
+        <figcaption class="space-y-4">
+          <h3 class="text-center">Cooking</h3>
+          <p class="feature__description">
+            Catering and cooking are my superpower. My favorite plate is stir
+            fried chicken with cashew nuts (orange chicken).
+          </p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>

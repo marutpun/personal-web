@@ -3,72 +3,136 @@
 @tailwind utilities;
 
 @layer base {
-  html {
-    font-family: "Inter", sans-serif;
+  :root {
+    --foreground: 240 10% 3.9%;
+  }
+
+  h1 {
+    @apply scroll-m-20 text-4xl font-extrabold lg:text-5xl;
+  }
+
+  h2 {
+    @apply scroll-m-20 border-b pb-2 text-3xl font-semibold first:mt-0;
+  }
+
+  h3 {
+    @apply scroll-m-20 text-2xl font-semibold;
+  }
+
+  p {
+    @apply leading-7;
+  }
+
+  body {
+    @apply font-inter font-normal;
   }
 }
 
 @layer components {
-  [type="submit"] {
-    @apply mx-0 my-4;
+  .container {
+    @apply mx-auto px-4;
   }
 
-  .btn-responsive {
-    @apply w-full sm:w-auto;
+  .skiplink {
+    @apply sr-only focus:not-sr-only;
   }
 
-  .callout {
-    @apply justify-center items-center flex h-full;
+  .header__container {
+    @apply container mx-auto px-4;
   }
 
-  .callout h2 {
-    @apply m-0;
+  .header__title {
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    @apply mb-2 inline-block bg-gradient-to-r from-[#833ab4] from-0% via-[#fd1d1d] via-50% to-[#fcb045] to-100%;
   }
 
-  .footer {
-    @apply mt-4;
-  }
-  
-}
-
-@layer utilities {
-  .grid-container {
-    @apply container mx-auto px-2.5 sm:px-4 py-0;
+  .section {
+    @apply my-8;
   }
 
   .grid-x {
-    @apply flex-row flex-wrap flex;
+    @apply grid grid-cols-1 md:grid-cols-12;
   }
 
-  .grid-container:not(.full) > .grid-padding-x {
-    @apply -mx-2.5 sm:-mx-4;
+  .feature__title {
+    @apply mb-4;
   }
 
-  .small-12 {
-    @apply w-full;
+  .feature__image {
+    @apply max-h-[128px];
   }
 
-  .medium-3 {
-    @apply sm:w-1/4
+  .feature__description {
+    @apply text-left md:text-center;
   }
 
-  .medium-4 {
-    @apply sm:w-1/3
+  legend {
+    @apply sr-only;
   }
 
-  .medium-6 {
-    @apply sm:w-2/4;
+  .form-control__image {
+    @apply md:h-[456px] max-h-[456px];
   }
 
-  .medium-9 {
-    @apply sm:w-3/4;
+  .form-control {
+    @apply space-y-2;
   }
 
-  .cell {
-    @apply flex-none min-w-0 min-h-0;
+  .form-control__label {
+    @apply inline-block;
   }
 
-  .grid-padding-x > .cell {
-    @apply px-2.5 sm:px-4;
+  .form-control__input {
+    @apply block w-full p-1 border-2 border-black focus:outline-none focus:outline-[3px] focus:outline-yellow-400 focus:outline-offset-0 focus:shadow-inner;
+  }
+
+  .form-control__button {
+    @apply rounded px-3 py-2 inline-block w-full bg-gradient-to-r from-[#833ab4] from-0% via-[#fd1d1d] via-50% to-[#fcb045] to-100% text-white;
+  }
+
+  .alert {
+    @apply p-4 rounded;
+  }
+
+  .alert--success {
+    @apply bg-green-100;
+  }
+
+  .alert--success p {
+    @apply text-neutral-900;
+  }
+
+  .alert--danger {
+    @apply bg-rose-50;
+  }
+
+  .alert--danger p {
+    @apply text-stone-800;
+  }
+
+  .footer {
+    @apply bg-neutral-100 px-0 md:px-8 py-8;
+  }
+
+  .footer__container {
+    @apply container mx-auto px-4 flex flex-col md:flex-row flex-wrap md:justify-between;
+  }
+
+  .footer__container p {
+    @apply m-0 text-center;
+  }
+
+  .cookie {
+    @apply w-full fixed bg-stone-400  inset-x-0 p-4 bottom-0;
+  }
+
+  .cookie__container {
+    @apply container flex flex-col md:flex-row md:justify-between flex-wrap gap-y-4;
+  }
+
+  .cookie__button {
+    @apply text-sm border border-black rounded-md px-2 py-1 hover:bg-stone-500;
   }
 }

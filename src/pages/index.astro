@@ -1,17 +1,14 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import Header from '../components/Header.astro'
-import Main from '../components/Main.astro'
-import ContactForm from '../components/ContactForm.astro'
-import Footer from '../components/Footer.astro'
-import Cookie from '../components/Cookie.astro';
-
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Work from '../components/Work.astro';
+import Contact from '../components/Contact.astro';
 ---
 
 <Layout title="Marut Punsakorn">
-  <Header />
-  <Main />
-  <ContactForm />
-  <Footer update="Sep 2024" />
-  <Cookie />
+  <Header title="Marut Punsakorn" description="Welcome to my website." />
+  <main id="__skipToContent_fallback">
+    <Work />
+    <Contact />
+  </main>
 </Layout>

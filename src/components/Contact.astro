@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import mailbox from '../assets/undraw_mailbox.svg';
+---
+
+<section class="section">
+  <div class="container">
+    <h2>Contact</h2>
+    <div class="grid-x my-8 gap-x-0 md:gap-x-8">
+      <div class="col-start-1 md:col-start-3 col-end-13 md:col-end-7">
+        <Image src={mailbox} alt="mailbox" class="form-control__image" />
+      </div>
+      <div
+        class="col-start-1 md:col-start-7 col-end-13 md:col-end-11 space-y-4"
+      >
+        <form method="POST" id="contact-form">
+          <fieldset>
+            <legend>Contact form</legend>
+            <div class="space-y-4">
+              <div class="form-control">
+                <label class="form-control__label" for="name">Name</label>
+                <input
+                  type="text"
+                  class="form-control__input"
+                  id="name"
+                  name="name"
+                />
+              </div>
+              <div class="form-control">
+                <label class="form-control__label" for="email">E-mail</label>
+                <input
+                  type="email"
+                  class="form-control__input"
+                  id="email"
+                  name="email"
+                />
+              </div>
+              <div class="form-control">
+                <label class="form-control__label" for="message">Message</label>
+                <textarea
+                  class="form-control__input"
+                  id="message"
+                  rows="5"
+                  name="message"></textarea>
+              </div>
+              <button class="form-control__button" type="submit">Submit</button>
+            </div>
+          </fieldset>
+        </form>
+        <div
+          id="alertBox"
+          role="alert"
+          tabindex="-1"
+          aria-live="assertive"
+          style="display: none"
+        >
+          <p class="text-sm"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="../lib/formValidation.ts"></script>
