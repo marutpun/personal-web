@@ -129,7 +129,7 @@
   }
 
   .footer {
-    @apply bg-neutral-100 dark:bg-zinc-800 px-0 md:px-8 py-8;
+    @apply bg-neutral-100 dark:bg-zinc-800 px-0 md:px-8 py-8 space-y-4;
   }
 
   .footer__container {
@@ -138,6 +138,14 @@
 
   .footer__container p {
     @apply m-0 text-center;
+  }
+
+  .viewport {
+    @apply flex flex-col flex-wrap items-center;
+  }
+
+  .viewport__button {
+    @apply inline-flex text-center dark:text-white cursor-pointer border-b border-black dark:border-white;
   }
 
   .cookie {

@@ -1,16 +1,17 @@
 ---
-const year = new Date().getFullYear();
-
 interface Props {
   title: string;
   updatedAt: string;
 }
 
+import ViewDesktop from '../components/ui/ViewDesktop.astro';
+const year = new Date().getFullYear();
+
 const { title, updatedAt } = Astro.props;
-const localDateTime = new Date(updatedAt).toLocaleString("en-US", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
+const localDateTime = new Date(updatedAt).toLocaleString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
 });
 ---
 
@@ -19,4 +20,5 @@ const localDateTime = new Date(updatedAt).toLocaleString("en-US", {
     <p>Copyright {year} {title}</p>
     <p>Last updated <time datetime={updatedAt}>{localDateTime}</time></p>
   </div>
+  <ViewDesktop />
 </footer>
