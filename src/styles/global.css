@@ -49,7 +49,7 @@
   }
 
   .section {
-    @apply my-8;
+    @apply my-4 md:my-8;
   }
 
   .grid-x {
