@@ -3,28 +3,24 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --foreground: 240 10% 3.9%;
-  }
-
   h1 {
-    @apply scroll-m-20 text-4xl font-extrabold lg:text-5xl;
+    @apply scroll-m-20 text-4xl font-extrabold lg:text-5xl text-black dark:text-white;
   }
 
   h2 {
-    @apply scroll-m-20 border-b pb-2 text-3xl font-semibold first:mt-0;
+    @apply scroll-m-20 border-b pb-2 text-3xl font-semibold first:mt-0 text-black dark:text-white;
   }
 
   h3 {
-    @apply scroll-m-20 text-2xl font-semibold;
+    @apply scroll-m-20 text-2xl font-semibold text-black dark:text-white;
   }
 
   p {
-    @apply leading-7;
+    @apply leading-7 text-black dark:text-white;
   }
 
   body {
-    @apply font-inter font-normal;
+    @apply font-inter font-normal bg-white dark:bg-black;
   }
 }
 
@@ -81,7 +77,7 @@
   }
 
   .form-control__label {
-    @apply inline-block;
+    @apply inline-block text-black dark:text-white;
   }
 
   .form-control__input {
@@ -113,7 +109,7 @@
   }
 
   .footer {
-    @apply bg-neutral-100 px-0 md:px-8 py-8;
+    @apply bg-neutral-100 dark:bg-zinc-800 px-0 md:px-8 py-8;
   }
 
   .footer__container {
