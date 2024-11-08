@@ -1,6 +1,5 @@
 ---
-import { Image } from 'astro:assets';
-import mailbox from '../../public/assets/undraw_mailbox.svg';
+import mailbox from '../assets/undraw_mailbox.svg';
 ---
 
 <section class="section">
@@ -8,7 +7,13 @@ import mailbox from '../../public/assets/undraw_mailbox.svg';
     <h2>Contact</h2>
     <div class="grid-x my-8 gap-x-0 md:gap-x-8">
       <div class="col-start-1 md:col-start-3 col-end-13 md:col-end-7">
-        <Image src={mailbox} alt="mailbox" class="form-control__image" />
+        <img
+          src={mailbox.src}
+          width={mailbox.width}
+          height={mailbox.height}
+          alt="mailbox"
+          class="form-control__image"
+        />
       </div>
       <div
         class="col-start-1 md:col-start-7 col-end-13 md:col-end-11 space-y-4"

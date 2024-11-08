@@ -1,10 +1,9 @@
 ---
-import { Image } from 'astro:assets';
-import teaching from '../../public/assets/undraw_teaching.svg';
-import code from '../../public/assets/undraw_code_thinking.svg';
-import agreement from '../../public/assets/undraw_agreement.svg';
-import playful from '../../public/assets/undraw_playful_cat.svg';
-import barbecue from '../../public/assets/undraw_barbecue.svg';
+import teaching from '../assets/undraw_teaching.svg';
+import code from '../assets/undraw_code_thinking.svg';
+import agreement from '../assets/undraw_agreement.svg';
+import playful from '../assets/undraw_playful_cat.svg';
+import barbecue from '../assets/undraw_barbecue.svg';
 ---
 
 <section class="section">
@@ -12,7 +11,13 @@ import barbecue from '../../public/assets/undraw_barbecue.svg';
     <h2 class="feature__title">Getting to know me</h2>
     <div class="grid-x gap-y-8 md:gap-y-4 gap-x-4">
       <figure class="col-start-1 col-end-13 md:col-end-5 space-y-4">
-        <Image class="feature__image" src={teaching} alt="teaching" />
+        <img
+          class="feature__image"
+          src={teaching.src}
+          width={teaching.width}
+          height={teaching.height}
+          alt="teaching"
+        />
         <figcaption class="space-y-4">
           <h3 class="text-center">Teaching</h3>
           <p class="feature__description">
@@ -24,7 +29,13 @@ import barbecue from '../../public/assets/undraw_barbecue.svg';
       <figure
         class="col-start-1 col-end-13 md:col-start-5 md:col-end-9 space-y-4"
       >
-        <Image class="feature__image" src={code} alt="web development" />
+        <img
+          class="feature__image"
+          src={code.src}
+          width={code.width}
+          height={code.height}
+          alt="web development"
+        />
         <figcaption class="space-y-4">
           <h3 class="text-center">Web Development</h3>
           <p class="feature__description">
@@ -34,7 +45,13 @@ import barbecue from '../../public/assets/undraw_barbecue.svg';
         </figcaption>
       </figure>
       <figure class="col-start-1 col-end-13 md:col-start-9 space-y-4">
-        <Image class="feature__image" src={agreement} alt="consultation" />
+        <img
+          class="feature__image"
+          src={agreement.src}
+          width={agreement.width}
+          height={agreement.height}
+          alt="consultation"
+        />
         <figcaption class="space-y-4">
           <h3 class="text-center">Digital Marketing Consultation</h3>
           <p class="feature__description">
@@ -45,7 +62,13 @@ import barbecue from '../../public/assets/undraw_barbecue.svg';
       <figure
         class="col-start-1 md:col-start-3 col-end-13 md:col-end-7 space-y-4"
       >
-        <Image class="feature__image" src={playful} alt="playful cat" />
+        <img
+          class="feature__image"
+          src={playful.src}
+          width={playful.width}
+          height={playful.height}
+          alt="playful cat"
+        />
         <figcaption class="space-y-4">
           <h3 class="text-center">Laugh</h3>
           <p class="feature__description">
@@ -57,7 +80,13 @@ import barbecue from '../../public/assets/undraw_barbecue.svg';
       <figure
         class="col-start-1 md:col-start-7 col-end-13 md:col-end-11 space-y-4"
       >
-        <Image class="feature__image" src={barbecue} alt="cooking" />
+        <img
+          class="feature__image"
+          src={barbecue.src}
+          width={barbecue.width}
+          height={barbecue.height}
+          alt="cooking"
+        />
         <figcaption class="space-y-4">
           <h3 class="text-center">Cooking</h3>
           <p class="feature__description">
