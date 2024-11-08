@@ -2,16 +2,16 @@ const buttonLight = document.querySelector('#buttonLight');
 const buttonSystem = document.querySelector('#buttonSystem');
 const buttonDark = document.querySelector('#buttonDark');
 const themeButtons = [buttonLight, buttonSystem, buttonDark];
-//loader function
-function applySystemTheme() {
-  const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-}
 
-//loader
-window.addEventListener('load', applySystemTheme);
-window
-  .matchMedia('(prefers-color-scheme: dark)')
-  .addEventListener('change', applySystemTheme);
+const getThemePreference = () => {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light';
+};
+
+const isDark = getThemePreference() === 'dark';
+
+document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
 
 themeButtons.forEach(($toggleSelector) => {
   $toggleSelector.addEventListener('click', function () {
