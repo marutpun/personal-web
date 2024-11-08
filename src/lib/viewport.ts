@@ -28,10 +28,15 @@ function setViewPort(responsive: boolean) {
 }
 
 window.addEventListener('load', () => {
-  const isMobileView = window.innerWidth <= 1024;
-  setViewPort(isMobileView);
+  if (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent,
+    )
+  ) {
+    viewMobileBtn.style.display = 'inline-flex'; // Show mobile button
+    viewDesktopBtn.style.display = 'none'; // Hide desktop button
+  }
 });
 
-viewMobileBtn.style.display = 'none';
 viewDesktopBtn.addEventListener('click', () => setViewPort(false));
 viewMobileBtn.addEventListener('click', () => setViewPort(true));
