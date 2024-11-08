@@ -33,6 +33,22 @@
     @apply sr-only focus:not-sr-only;
   }
 
+  .section {
+    @apply my-4 md:my-8;
+  }
+
+  .toggle-control {
+    @apply my-2 flex flex-col md:flex-row flex-wrap gap-2 md:gap-4;
+  }
+
+  .toggle-control__button {
+    @apply cursor-pointer w-11 h-11 inline-flex justify-center items-center border-2 rounded border-zinc-300 hover:border-black dark:border-0 dark:bg-zinc-300 dark:hover:bg-[#fcb045] aria-[checked=true]:bg-[#fcb045] aria-[checked=true]:border-black dark:aria-[checked=true]:bg-[#fcb045];
+  }
+
+  .toggle-control__icon {
+    @apply w-6 h-6;
+  }
+
   .header__container {
     @apply container mx-auto px-4;
   }
@@ -50,10 +66,6 @@
 
   .hero__description--link {
     @apply hover:text-gray-500 hover:underline dark:hover:text-gray-300;
-  }
-
-  .section {
-    @apply my-4 md:my-8;
   }
 
   .grid-x {

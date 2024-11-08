@@ -1,0 +1,69 @@
+---
+import sun from '../../assets/icon/sun.svg';
+import desktop from '../../assets/icon/desktop.svg';
+import moon from '../../assets/icon/moon.svg';
+
+console.log(sun);
+---
+
+<div class="toggle-control">
+  <button
+    type="button"
+    aria-label="Switch to light theme"
+    role="radio"
+    aria-checked="false"
+    class="toggle-control__button"
+    id="buttonLight"
+    data-theme="light"
+  >
+    <img
+      class="toggle-control__icon"
+      src={sun.src}
+      width={sun.width}
+      height={sun.height}
+      alt="Light mode"
+      aria-hidden="true"
+    />
+    <span class="sr-only">Light</span>
+  </button>
+  <button
+    type="button"
+    aria-label="Switch to system theme"
+    role="radio"
+    aria-checked="true"
+    class="toggle-control__button"
+    id="buttonSystem"
+    data-theme="system"
+  >
+    <img
+      class="toggle-control__icon"
+      src={desktop.src}
+      width={desktop.width}
+      height={desktop.height}
+      alt="system"
+      aria-hidden="true"
+    />
+    <span class="sr-only">System</span>
+  </button>
+  <button
+    type="button"
+    aria-label="Switch to dark theme"
+    role="radio"
+    aria-checked="false"
+    class="toggle-control__button"
+    id="buttonDark"
+    data-theme="dark"
+  >
+    <img
+      class="toggle-control__icon"
+      src={moon.src}
+      width={moon.width}
+      height={moon.height}
+      alt="Dark mode"
+      aria-hidden="true"
+    />
+    <span class="sr-only">Dark</span>
+  </button>
+</div>
+
+<script src="../../lib/theme.ts"></script>
