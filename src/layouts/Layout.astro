@@ -7,6 +7,7 @@ const { title } = Astro.props;
 
 import '../styles/global.css';
 import SkipLink from '../components/SkipLink.astro';
+import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Cookie from '../components/Cookie.astro';
 ---
@@ -19,13 +20,11 @@ import Cookie from '../components/Cookie.astro';
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
   </head>
   <body>
     <SkipLink />
+    <Nav />
     <slot />
     <Footer title="Marut Punsakorn" updatedAt="2024-11-6" />
     <Cookie />

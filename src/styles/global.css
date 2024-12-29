@@ -33,6 +33,22 @@
     @apply sr-only focus:not-sr-only;
   }
 
+  .navbar {
+    @apply py-4 px-2 h-[3.75rem] shadow-[0_1px_2px_#0000001a];
+  }
+
+  .navbar__inner {
+    @apply flex flex-wrap justify-between w-full;
+  }
+
+  .navbar__items {
+    @apply list-none flex flex-row flex-wrap;
+  }
+
+  .navbar__link {
+    @apply inline-block py-1 px-3;
+  }
+
   .section {
     @apply my-4 md:my-8;
   }
@@ -47,6 +63,10 @@
 
   .toggle-control__icon {
     @apply w-6 h-6;
+  }
+
+  .header {
+    @apply mt-4;
   }
 
   .header__container {
