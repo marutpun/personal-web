@@ -12,7 +12,7 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
   safelist: [
     {
       pattern: /alert--(success|danger)/,
